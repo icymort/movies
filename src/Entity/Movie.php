@@ -3,7 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\MovieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
 
 #[ORM\Entity(repositoryClass: MovieRepository::class)]
 class Movie
@@ -24,6 +28,14 @@ class Movie
 
     #[ORM\Column(length: 255)]
     private ?string $imagePath = null;
+
+    #[ManyToMany(targetEntity: Actor::class, mappedBy: "movies")]
+    private Collection $actors;
+
+    public function __construct()
+    {
+        $this->actors = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +86,28 @@ class Movie
     public function setImagePath(string $imagePath): static
     {
         $this->imagePath = $imagePath;
+
+        return $this;
+    }
+
+
+    public function getActors(): Collection
+    {
+        return $this->actors;
+    }
+
+    public function addActor(Actor $actor): self
+    {
+        if (!$this->actors->contains($actor)) {
+            $this->actors[] = $actor;
+        }
+
+        return $this;
+    }
+
+    public function removeActor(Actor $actor): self
+    {
+        $this->actors->removeElement($actor);
 
         return $this;
     }

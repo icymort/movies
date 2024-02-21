@@ -15,6 +15,11 @@ class MovieFixtures extends Fixture
         $movie->setReleaseYear(2008);
         $movie->setDescription('Description of the Dark Night');
         $movie->setImagePath('https://cdn.pixabay.com/photo/2023/03/14/21/53/sculpture-7853242_1280.jpg');
+
+        // Add Date to Pivot Table
+        $movie->addActor($this->getReference('actor_1'));
+        $movie->addActor($this->getReference('actor_2'));
+
         $manager->persist($movie);
 
         $movie2 = new Movie();
@@ -22,9 +27,15 @@ class MovieFixtures extends Fixture
         $movie2->setReleaseYear(2008);
         $movie2->setDescription('Description of the Avangers: Endgame');
         $movie2->setImagePath('https://cdn.pixabay.com/photo/2023/06/29/02/54/hulk-8095537_1280.png');
+
+        // Add Date to Pivot Table
+        $movie2->addActor($this->getReference('actor_3'));
+        $movie2->addActor($this->getReference('actor_4'));
+
         $manager->persist($movie2);
 
         $manager->flush();
+
 
     }
 }
