@@ -17,7 +17,7 @@
              @keydown.escape="isOpen = false"
              :class="{ 'shadow-lg bg-gray-600' : isOpen , 'bg-gray-600' : !isOpen}">
             <div class="flex items-center flex-shrink-0 text-white mr-6">
-                <a class="text-white no-underline hover:text-white hover:no-underline" href="/">
+                <a class="text-white no-underline hover:text-white hover:no-underline" href="/movies">
                     <span class="text-2xl pl-2 font-extrabold">Movies</span>
                 </a>
             </div>
@@ -56,7 +56,7 @@
                     <li class="mr-3">
                         <a
                                 class="inline-block text-gray-300 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-                                href="/"
+                                href="/movies"
                                 @click="isOpen = false">
                             Home
                         </a>
@@ -66,17 +66,28 @@
                         <a
                                 class="inline-block text-gray-300 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
                                 href="/movies"
-                                @click="isOpen = false"
-                        >Movies
+                                @click="isOpen = false">
+                            Movies
                         </a>
                     </li>
 
                     <li class="mr-3">
                         <a
                                 class="inline-block text-gray-300 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-                                href="/contact"
+                                href="/register"
+                                @click="isOpen = false"
+                        >Register
+                        </a>
+                    </li>
+
+
+
+                    <li class="mr-3">
+                        <a
+                                class="inline-block text-gray-300 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+                                href="/{{ app.user ? 'logout' : 'login'}}"
                                 @click="isOpen = false">
-                            Contact
+                            {{ app.user ? 'Logout' : 'Login' }}
                         </a>
                     </li>
                 </ul>
