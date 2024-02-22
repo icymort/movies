@@ -26,7 +26,7 @@ class MovieFixtures extends Fixture
         $movie2->setTitle('Avangers: Endgame');
         $movie2->setReleaseYear(2008);
         $movie2->setDescription('Description of the Avangers: Endgame');
-        $movie2->setImagePath('https://cdn.pixabay.com/photo/2023/06/29/02/54/hulk-8095537_1280.png');
+        $movie2->setImagePath('https://cdn.pixabay.com/photo/2022/11/18/02/25/baby-hulk-7599327_1280.jpg');
 
         // Add Date to Pivot Table
         $movie2->addActor($this->getReference('actor_3'));
